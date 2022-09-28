@@ -16,14 +16,15 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>Hi {this.state.name}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => {
+              this.setState({
+                name: "💩",
+              });
+            }}
           >
-            Learn React
-          </a>
+            Change Name
+          </button>
         </header>
       </div>
     );
