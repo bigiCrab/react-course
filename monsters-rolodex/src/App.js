@@ -4,7 +4,21 @@ import { Component } from "react";
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
 
-class App extends Component {
+const App = () => {
+  return (
+    <div className="App">
+      <h1 className="app-title">Monsters Rolodex</h1>
+      {/* <SearchBox
+        onChangeHandler={onSearchChange}
+        placeholder="search monster"
+        className="monster-search-box"
+      ></SearchBox>
+      <CardList monsters={filteredMonsters}></CardList> */}
+    </div>
+  );
+};
+
+/* class App extends Component {
   constructor() {
     // console.log("constructor call");
     super();
@@ -61,6 +75,6 @@ class App extends Component {
       </div>
     );
   }
-}
+} */
 
 export default App;
