@@ -38,9 +38,10 @@ class App extends Component {
           placeholder="search monsters"
           onChange={(event) => {
             console.log(event.target.value);
+            const searchStr = event.target.value.toLowerCase();
             this.setState({
               monsters: this.state.monsters.filter((monster) =>
-                monster.name.includes(event.target.value)
+                monster.name.toLowerCase().includes(event.target.value)
               ),
             });
           }}
