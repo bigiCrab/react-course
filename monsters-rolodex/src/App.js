@@ -4,16 +4,25 @@ import { Component } from "react";
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
 
+import { useState } from "react";
+
 const App = () => {
+  const [searchField, setSearchField] = useState("");
+  console.log(searchField);
+  const onSearchChange = (event) => {
+    // console.log("search onChange:", event.target.value);
+    const searchFieldString = event.target.value.toLowerCase();
+    setSearchField(searchFieldString);
+  };
   return (
     <div className="App">
       <h1 className="app-title">Monsters Rolodex</h1>
-      {/* <SearchBox
+      <SearchBox
         onChangeHandler={onSearchChange}
         placeholder="search monster"
         className="monster-search-box"
       ></SearchBox>
-      <CardList monsters={filteredMonsters}></CardList> */}
+      {/* <CardList monsters={filteredMonsters}></CardList> */}
     </div>
   );
 };
