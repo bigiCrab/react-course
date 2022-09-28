@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 const App = () => {
   const [searchField, setSearchField] = useState("");
   const [monsters, setMonsters] = useState([]);
+  const [filteredMonsters, setFilteredMonsters] = useState([]);
+  const [stringField, setStringField] = useState("");
 
   console.log("render");
 
@@ -19,15 +21,25 @@ const App = () => {
       .then((users) => setMonsters(users));
   }, []);
 
+  useEffect(() => {
+    const filteredMonsters = monsters.filter((monster) =>
+      monster.name.toLowerCase().includes(searchField)
+    );
+    setFilteredMonsters(filteredMonsters);
+    console.log("filter done:", filteredMonsters);
+  }, [searchField,monsters]);
+
   const onSearchChange = (event) => {
-    // console.log("search onChange:", event.target.value);
+    console.log("search onChange:", event.target.value);
     const searchFieldString = event.target.value.toLowerCase();
     setSearchField(searchFieldString);
   };
 
-  const filteredMonsters = monsters.filter((monster) =>
-    monster.name.toLowerCase().includes(searchField)
-  );
+  const onStringChange = (event) => {
+    console.log("string onChange:", event.target.value);
+    const stringFieldString = event.target.value.toLowerCase();
+    setStringField(stringFieldString);
+  };
 
   return (
     <div className="App">
@@ -36,6 +48,10 @@ const App = () => {
         onChangeHandler={onSearchChange}
         placeholder="search monster"
         className="monster-search-box"
+      ></SearchBox>
+      <SearchBox
+        onChangeHandler={onStringChange}
+        placeholder="search string"
       ></SearchBox>
       <CardList monsters={filteredMonsters}></CardList>
     </div>
