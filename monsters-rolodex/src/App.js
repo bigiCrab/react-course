@@ -5,7 +5,7 @@ import CardList from "./components/card-list/card-list.component";
 
 class App extends Component {
   constructor() {
-    console.log("constructor call");
+    // console.log("constructor call");
     super();
 
     this.state = {
@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount call");
+    // console.log("componentDidMount call");
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) =>
@@ -24,14 +24,14 @@ class App extends Component {
             monsters: users,
           },
           () => {
-            console.log(this.state.monsters);
+            // console.log(this.state.monsters);
           }
         )
       );
   }
 
   onSearchChange = (event) => {
-    console.log("search onChange:", event.target.value);
+    // console.log("search onChange:", event.target.value);
     const searchField = event.target.value.toLowerCase();
     this.setState(() => {
       return { searchField };
@@ -39,7 +39,7 @@ class App extends Component {
   };
 
   render() {
-    console.log("render call");
+    // console.log("render call");
 
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
@@ -56,7 +56,10 @@ class App extends Component {
           placeholder="search monsters"
           onChange={onSearchChange}
         />
-        <CardList></CardList>
+        <CardList
+          monsters={filteredMonsters}
+          onSearchChange={onSearchChange}
+        ></CardList>
       </div>
     );
   }
