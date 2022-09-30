@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from "react";
 import "./search-box.styles.css";
 
 interface ISearchBox extends IChangeHandlerProps {
@@ -9,7 +10,7 @@ interface ISearchBox {
 }
 // extends
 interface IChangeHandlerProps {
-  onChangeHandler: (a: any) => void;
+  onChangeHandler: ChangeEventHandler<HTMLInputElement>;
 }
 
 const SearchBox = ({ className, placeholder, onChangeHandler }: ISearchBox) => {
